@@ -1,0 +1,56 @@
+# Base domain for the OpenShift cluster
+basedomain = "example.com"
+
+# Directory name for cluster deployment files
+cluster_dir = "ocp-powervs-deploy"
+
+# Name of the OpenShift cluster
+cluster_name = "my-ocp-cluster"
+
+# IBM Cloud user email
+ibm_id = "user@example.com"
+
+# OpenShift release version to deploy
+openshift_release = "4.18.5"
+
+# PowerVS region (e.g., dal, lon, syd, tok, etc.)
+powervs_region = "dal"
+
+# PowerVS zone within the region
+powervs_zone = "dal10"
+
+# PowerVS workspace GUID (leave empty to create a new one)
+powervs_workspace_guid = ""
+
+# Path to the pull secret file for OpenShift
+pull_secret_file = "./data/pullSecret"
+
+# IBM Cloud resource group name
+resource_group = "Default"
+
+# SSH public key for cluster access
+ssh_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC... user@hostname"
+
+# SSH identity/agent comment (optional)
+ssh_identity = ""
+
+# SSH host for deployment
+ssh_host = "localhost"
+
+# SSH user for deployment
+ssh_user = "root"
+
+# IBM Cloud API key
+api_key = "your-ibm-cloud-api-key-here"
+
+# Transit Gateway name (leave empty to create a new one)
+tg_name = ""
+
+# Name of the VPC to deploy from
+vpc_name = "my-vpc"
+
+# VPC region
+vpc_region = "us-south"
+
+# VPC zone within the region
+vpc_zone = "us-south-1"

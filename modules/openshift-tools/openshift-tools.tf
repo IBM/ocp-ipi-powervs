@@ -1,6 +1,7 @@
 
 locals {
   base_path   = "/tmp"
+  cluster_dir = "${var.cluster_dir}"
   base_url    = "https://mirror.openshift.com/pub/openshift-v4"
   tools       = {
     oc = {
@@ -22,15 +23,15 @@ resource "null_resource" "install-tool" {
   for_each = local.tools
   connection {
     agent = "true"
-    agent_identity = "root@bluemarine1.fyre.ibm.com"
+    agent_identity = "${var.ssh_identity}"
     type  = "ssh"
-    user  = "root"
-    host  = "localhost"
+    user  = "${var.ssh_user}"
+    host  = "${var.ssh_host}"
   }
   provisioner "remote-exec" {
     inline = [
       "curl ${local.base_url}/${each.value.release_arch}/clients/ocp/${var.openshift_release}/${each.value.file} > ${local.base_path}/${each.value.file}",
-      "tar xvf ${local.base_path}/${each.value.file} -C /usr/bin/ ${each.key}"
+      "tar xvf ${local.base_path}/${each.value.file} -C ${local.cluster_dir}/bin/"
     ]
   }
 }

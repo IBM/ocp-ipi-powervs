@@ -21,14 +21,14 @@ resource "null_resource" "cluster" {
 
   provisioner "remote-exec" {
     inline = [
-      "IBMCLOUD_API_KEY=${self.triggers.api_key} openshift-install create cluster --dir=${self.triggers.cluster_dir} --log-level=debug",
+      "IBMCLOUD_API_KEY=${self.triggers.api_key} ${self.triggers.cluster_dir}/bin/openshift-install create cluster --dir=${self.triggers.cluster_dir} --log-level=debug",
     ]
   }
 
   provisioner "remote-exec" {
     when = destroy
     inline = [
-      "IBMCLOUD_API_KEY=${self.triggers.api_key} openshift-install destroy cluster --dir=${self.triggers.cluster_dir} --log-level=debug",
+      "IBMCLOUD_API_KEY=${self.triggers.api_key} ${self.triggers.cluster_dir}/bin/openshift-install destroy cluster --dir=${self.triggers.cluster_dir} --log-level=debug",
     ]
   }
 }

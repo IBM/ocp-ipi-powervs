@@ -1,3 +1,8 @@
+variable "cluster_dir" {
+  type        = string
+  description = "The directory that holds the artifacts of the cluster create."
+}
+
 variable "openshift_release" {
   type        = string
   description = "The openshift release (ie: 4.18.5) to be used."
